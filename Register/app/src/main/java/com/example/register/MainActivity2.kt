@@ -43,11 +43,15 @@ class MainActivity2 : AppCompatActivity()
             var t = claim?.toInt()
 
             //   Check for 5 min condition
-                if (expiryTimeInMinutes != null) {
-                    if (expiryTimeInMinutes > 55) {
+                if (expiryTimeInMinutes != null) 
+                {
+                    if (expiryTimeInMinutes > 55)
+                    {
                         // Toast.makeText(this, "More than 5 min remaining", Toast.LENGTH_SHORT).show()
                         Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
-                    } else {
+                    } 
+                    else 
+                    {
                         Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show()
 
                         //Calling Refresh API
