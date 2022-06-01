@@ -17,7 +17,6 @@ import com.auth0.android.jwt.JWT
 import org.json.JSONObject
 import java.lang.System.currentTimeMillis
 
-
 class MainActivity : AppCompatActivity()
 {
     private lateinit var sharedPreferences: SharedPreferences
@@ -41,24 +40,6 @@ class MainActivity : AppCompatActivity()
 
         //Setting up an on-click listener
         login.setOnClickListener{
-            //DB
-            val db = DBHelper(this, null)
-            db.addUser(inputEmail, inputPassword)
-
-            //fetching values
-            val cursor = db.getUser()
-            cursor!!.moveToFirst()
-            var getId=cursor.getColumnIndex(DBHelper.NAME_COl)
-            var getData=cursor.getString(getId)
-
-//            while(cursor.moveToNext()) {
-//                val a = cursor.getString(cursor.getColumnIndex(DBHelper.NAME_COl))()
-//                val b = (cursor.getString(cursor.getColumnIndex(DBHelper.PASSWORD_COL)) + "\n")
-//
-//                Toast.makeText(this, a.toString(), Toast.LENGTH_SHORT).show()
-//            }
-            cursor.close()
-
             // Calling Login API
             val queue = Volley.newRequestQueue(this)
             val url = "https://api-smartflo.tatateleservices.com/v1/auth/login"
@@ -121,52 +102,3 @@ class MainActivity : AppCompatActivity()
     }
 }
 
-
-
-//
-//val queue = Volley.newRequestQueue(this)
-//val url = "https://api-smartflo.tatateleservices.com/v1/auth/refresh"
-//
-//// Request a string response from the provided URL.
-//val stringRequest = object:StringRequest(Request.Method.GET, url,
-//    Response.Listener<String> { response ->
-//        textView.text = "Response"
-//    },
-//    Response.ErrorListener { textView.text = "That didn't work!" }){
-//    override fun getParams(): MutableMap<String, String> {
-//        val params = HashMap<String, String>()
-//        params.put("Authorization", token.toString())
-//        return params;
-
-
-
-//Shared Prefrences
-
-//                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-//                    editor = sharedPreferences.edit()
-//                    editor.putString(getString(R.string.name), token)
-//                    editor.commit()
-//
-//                    e = sharedPreferences.getString(getString(R.string.name), "").toString()
-//
-//                    //Bundle
-//                    val bundle=Bundle()
-//                    bundle.putString("data",e)
-//                    val intent = Intent(this,FrontPage::class.java)
-//                    intent.putExtras(bundle)
-//                    startActivity(intent)
-//                    finish()
-
-//val bundle=Bundle()
-//bundle.putString("token",e)
-//val intent = Intent(this,MainActivity2::class.java)
-//intent.putExtras(bundle)
-//startActivity(intent)
-//                          finish()
-//                          Toast.makeText(this, token.toString(), Toast.LENGTH_SHORT).show()
-
-
-
-//                    val editor: sharedPrefrences.Editor = sharedPrefrences.edit()
-//                    editor.putString("token",token)
-//                    editor.apply()
