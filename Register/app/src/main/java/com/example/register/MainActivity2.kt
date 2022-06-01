@@ -79,7 +79,7 @@ class MainActivity2 : AppCompatActivity()
                         // Add the request to the RequestQueue.
                         queue.add(stringRequest)
                     }
-            }
+                }
         }
     }
 }
