@@ -7,15 +7,12 @@ import android.preference.PreferenceManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.auth0.android.jwt.JWT
 import org.json.JSONObject
-import java.lang.System.currentTimeMillis
 
 class MainActivity : AppCompatActivity()
 {
@@ -29,17 +26,15 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var email: EditText = findViewById(R.id.eMail)
-        var password = findViewById(R.id.password) as EditText
-        var inputEmail=email.getText().toString()
-        var inputPassword=password.getText().toString()
-        val textView = findViewById<TextView>(R.id.text)
+        val email: EditText = findViewById(R.id.eMail)
+        val password:EditText = findViewById(R.id.password)
+        val heading= findViewById<TextView>(R.id.heading)
         name = findViewById(R.id.eMail)
-        val login = findViewById<Button>(R.id.signIn)
-        val signUp = findViewById<TextView>(R.id.signup)
+        val signIn:Button = findViewById(R.id.signIn)
+        val signUp:Button = findViewById(R.id.signup)
 
         //Setting up an on-click listener
-        login.setOnClickListener{
+        signIn.setOnClickListener{
             // Calling Login API
             val queue = Volley.newRequestQueue(this)
             val url = "https://api-smartflo.tatateleservices.com/v1/auth/login"
@@ -58,10 +53,10 @@ class MainActivity : AppCompatActivity()
                     editor.commit()
                     storedToken = sharedPreferences.getString(getString(R.string.name), "").toString()
                     val intent = Intent(this,MainActivity2::class.java)
-                    startActivity(intent)   
+                    startActivity(intent)
                 },
                 Response.ErrorListener {
-                    textView.text = "INVALID!"
+                    heading.text = "INVALID!"
                 }) {
                 //adding params
                 override fun getParams(): MutableMap<String, String>
