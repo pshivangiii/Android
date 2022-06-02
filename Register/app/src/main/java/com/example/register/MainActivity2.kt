@@ -25,7 +25,6 @@ class MainActivity2 : AppCompatActivity()
         //SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val token = sharedPreferences.getString(getString(R.string.name), "").toString()
-        //            val token=""
 
         if (token.isNullOrEmpty())
         {
@@ -40,14 +39,12 @@ class MainActivity2 : AppCompatActivity()
             var claim: String? = jwt.getClaim("exp").asString()
             var diffrence = ((claim?.toInt())?.minus((currentTime?.toInt()!!)))
             var expiryTimeInMinutes = diffrence?.div(60)
-            var t = claim?.toInt()
 
             //   Check for 5 min condition
                 if (expiryTimeInMinutes != null) 
                 {
-                    if (expiryTimeInMinutes > 55)
+                    if (expiryTimeInMinutes > 5)
                     {
-                        // Toast.makeText(this, "More than 5 min remaining", Toast.LENGTH_SHORT).show()
                         Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
                     } 
                     else 
