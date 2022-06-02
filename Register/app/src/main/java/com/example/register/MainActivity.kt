@@ -57,27 +57,8 @@ class MainActivity : AppCompatActivity()
                     editor.putString(getString(R.string.name), token)
                     editor.commit()
                     storedToken = sharedPreferences.getString(getString(R.string.name), "").toString()
-
-                    //PAYLOAD DECODE
-                    if(token.isEmpty())
-                    {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                    val currentTime=currentTimeMillis()/1000
-                    var jwt: JWT = JWT(token)
-                    var claim: String? = jwt.getClaim("exp").asString()
-                    var diffrence= ((claim?.toInt())?.minus((currentTime?.toInt()!!)))
-                    var expiryTimeInMinutes= diffrence?.div(60)
-                    var t= claim?.toInt()
-                    if (expiryTimeInMinutes != null) {
-                        //Check for 5 min condition
-                        if (expiryTimeInMinutes > 5)
-                        {
-                            val intent = Intent(this,MainActivity2::class.java)
-                            startActivity(intent)
-                        }
-                    }
+                    val intent = Intent(this,MainActivity2::class.java)
+                    startActivity(intent)   
                 },
                 Response.ErrorListener {
                     textView.text = "INVALID!"
