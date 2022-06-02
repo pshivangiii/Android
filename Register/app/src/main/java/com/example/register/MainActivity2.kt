@@ -41,44 +41,44 @@ class MainActivity2 : AppCompatActivity()
             var expiryTimeInMinutes = diffrence?.div(60)
 
             //   Check for 5 min condition
-                if (expiryTimeInMinutes != null) 
+            if (expiryTimeInMinutes != null)
+            {
+                if (expiryTimeInMinutes > 55)
                 {
-                    if (expiryTimeInMinutes > 5)
-                    {
-                        Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
-                    } 
-                    else 
-                    {
-                        Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show()
-
-                        //Calling Refresh API
-                        val queue = Volley.newRequestQueue(this)
-                        val url = " https://api-smartflo.tatateleservices.com/v1/auth/refresh"
-                        val stringRequest = object : StringRequest(Request.Method.POST, url,
-                            Response.Listener<String>
-                            { response ->
-                                val jsonResponse = JSONObject(response)
-                                val newToken = jsonResponse.getString("access_token")
-                                Toast.makeText(this,newToken, Toast.LENGTH_SHORT).show()
-                            },
-                            Response.ErrorListener
-                            {
-                                Toast.makeText(this, "INVALID", Toast.LENGTH_SHORT).show()
-                            }) {
-                            //adding header
-                            override fun getHeaders(): Map<String, String> {
-                                val headers = HashMap<String, String>()
-                                headers.put("Content-Type", "application/json");
-                                headers.put("Authorization", "Bearer " + token.toString())
-                                return headers
-                            }
-                        }
-                        // Add the request to the RequestQueue.
-                        queue.add(stringRequest)
-                    }
+                    val intent = Intent(this, ContactApiActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(this, token, Toast.LENGTH_SHORT).show()
+                    return
                 }
+
+                    Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show()
+
+                    //Calling Refresh API
+                    val queue = Volley.newRequestQueue(this)
+                    val url = " https://api-smartflo.tatateleservices.com/v1/auth/refresh"
+                    val stringRequest = object : StringRequest(Request.Method.POST, url,
+                        Response.Listener<String>
+                        { response ->
+                            val jsonResponse = JSONObject(response)
+                            val newToken = jsonResponse.getString("access_token")
+                            Toast.makeText(this,newToken, Toast.LENGTH_SHORT).show()
+                        },
+                        Response.ErrorListener
+                        {
+                            Toast.makeText(this, "INVALID", Toast.LENGTH_SHORT).show()
+                        }) {
+                        //adding header
+                        override fun getHeaders(): Map<String, String> {
+                            val headers = HashMap<String, String>()
+                            headers.put("Content-Type", "application/json");
+                            headers.put("Authorization", "Bearer " + token.toString())
+                            return headers
+                        }
+                    }
+                    // Add the request to the RequestQueue.
+                    queue.add(stringRequest)
+
+            }
         }
     }
 }
-
-
