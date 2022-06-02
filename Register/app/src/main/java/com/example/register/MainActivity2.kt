@@ -44,11 +44,11 @@ class MainActivity2 : AppCompatActivity()
         //   Check for 5 min condition
         if (expiryTimeInMinutes != null)
         {
-            if (expiryTimeInMinutes > 5)
+            if (expiryTimeInMinutes > 57)
             {
                 val intent = Intent(this, ContactApiActivity::class.java)
                 startActivity(intent)
-                Toast.makeText(this,"HI", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,token, Toast.LENGTH_SHORT).show()
                 return
             }
             Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show()
@@ -64,7 +64,7 @@ class MainActivity2 : AppCompatActivity()
                     editor = sharedPreferences.edit()
                     editor.putString(getString(R.string.name), newToken)
                     editor.commit()
-                    var token=newToken
+
                     Toast.makeText(this, newToken, Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, ContactApiActivity::class.java)
                     startActivity(intent)
