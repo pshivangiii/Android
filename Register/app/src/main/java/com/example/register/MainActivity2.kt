@@ -59,7 +59,7 @@ class MainActivity2 : AppCompatActivity()
                             { response ->
                                 val jsonResponse = JSONObject(response)
                                 val newToken = jsonResponse.getString("access_token")
-                                Toast.makeText(this,"Token refreshed", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this,newToken, Toast.LENGTH_SHORT).show()
                             },
                             Response.ErrorListener
                             {
