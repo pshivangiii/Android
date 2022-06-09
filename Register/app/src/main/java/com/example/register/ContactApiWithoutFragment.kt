@@ -28,12 +28,10 @@ class ContactApiWithoutFragment : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_api)
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val token = sharedPreferences.getString(getString(R.string.name), "")
         recyclerView=findViewById(R.id.recyclerview)
         getData(token,pageNumber)
-
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener()
         {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int)
@@ -106,5 +104,5 @@ class ContactApiWithoutFragment : AppCompatActivity()
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
     }
-} 
+}
 
