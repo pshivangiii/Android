@@ -32,4 +32,4 @@ class CustomAdapter(private val dataList: List<ItemsViewModel>) : RecyclerView.A
         val textView: TextView = itemView.findViewById(R.id.textView)
         val textView2: TextView = itemView.findViewById(R.id.textView2)
     }
-}
+} 
