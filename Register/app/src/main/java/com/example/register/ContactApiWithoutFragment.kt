@@ -81,7 +81,6 @@ class ContactApiWithoutFragment : AppCompatActivity()
                 val adapter = CustomAdapter(data)
                 // Setting the Adapter with the recyclerview
                 recyclerView.adapter = adapter
-                adapter.setOnLoadMoreListener()
                 adapter.notifyDataSetChanged()
             },
             Response.ErrorListener
