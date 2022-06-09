@@ -35,7 +35,6 @@ class MyFragment : Fragment()
 
     fun callContactApi(context: Context, token:String?, page:Int)
     {
-        var page = page
         //CALLING CONTACT API
         val queue = Volley.newRequestQueue(context)
         val progressBar : ProgressBar? = view?.findViewById(R.id.progressBar)
