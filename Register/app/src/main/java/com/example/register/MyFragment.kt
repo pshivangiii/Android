@@ -62,7 +62,6 @@ class MyFragment : Fragment()
                 progressBar?.visibility = View.VISIBLE
                 val adapter = CustomAdapter(data)
                 recyclerview?.adapter = adapter
-                adapter.setOnLoadMoreListener()
                 adapter.notifyDataSetChanged();
 
                 if(size.toInt() == 0)
