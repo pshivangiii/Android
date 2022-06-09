@@ -18,7 +18,7 @@ class ContactApiActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_api)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        var token = sharedPreferences.getString(getString(R.string.name), "")
+        val token = sharedPreferences.getString(getString(R.string.name), "")
         scrollView = findViewById(R.id.idNestedSV);
         myFragment = MyFragment()
         supportFragmentManager
